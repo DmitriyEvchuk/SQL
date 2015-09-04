@@ -1,5 +1,11 @@
 public class MyParser {
 
+	public MyParser(MySqlExecute ex) {
+		execut = ex;
+	}
+
+	MySqlExecute execut;
+
 	public void parse(String forParse) {
 
 		String control = "";
@@ -14,7 +20,7 @@ public class MyParser {
 			if (buf == '<') {
 				tegNameBegin = true;
 				control = "";
-			
+
 			}
 
 			if (tegNameBegin) {
@@ -33,20 +39,21 @@ public class MyParser {
 				tegNameBegin = false;
 			}
 
-			if (control.equals("</td>")){
+			if (control.equals("</td>")) {
 				counterTd++;
-			
-				if(counterTd==1)
-					System.out.println(data);
-				
-				if(counterTd==4){
-					System.out.println(data);
-					counterTd=0;
+
+				if (counterTd == 1)
+					execut.addCountry(data);
+
+				if (counterTd == 4) {
+					execut.addCode(data);
+
+					counterTd = 0;
 				}
-				control="";
-				data="";
-				
-			}	
+				control = "";
+				data = "";
+
+			}
 
 		}// for
 

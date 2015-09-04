@@ -24,7 +24,7 @@ public class FileReder {
 					resultStr = resultStr + buf;
 
 			}
-
+			read.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,11 +35,12 @@ public class FileReder {
 	public static void main(String[] args) {
 
 		FileReder read = new FileReder();
-		MyParser parse=new MyParser();
-		
+		MySqlExecute my = new MySqlExecute();
+		MyParser parse = new MyParser(my);
+
 		read.readFile("E:\\work\\ccy1.txt");
 		parse.parse(read.getResult());
-
+		my.showData();
 	}
 
 }
