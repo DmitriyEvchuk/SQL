@@ -9,26 +9,6 @@ public class MySqlExecute {
 	private Statement stmt;
 	private Integer ID = 1;
 
-	public void showData(){
-		
-		ResultSet set;
-		try {
-			set = stmt.executeQuery("select * from currency");
-		
-			while (set.next()) {
-
-				System.out.println(set.getInt("ID") + " " + set.getString("Code")
-						+ " " + set.getString("Country"));
-			
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	
 	public MySqlExecute() {
 
 		try {
@@ -43,6 +23,26 @@ public class MySqlExecute {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/forsun?"
 					+ "user=chuk&password=09111981");
 			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void showData() {
+
+		ResultSet set;
+		try {
+			set = stmt.executeQuery("select * from currency");
+
+			while (set.next()) {
+
+				System.out.println(set.getInt("ID") + " "
+						+ set.getString("Code") + " "
+						+ set.getString("Country"));
+
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
