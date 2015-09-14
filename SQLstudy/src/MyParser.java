@@ -1,10 +1,10 @@
 public class MyParser {
 
-	public MyParser(MySqlExecute ex) {
+	public MyParser(SQLFileCreator ex) {
 		execut = ex;
 	}
 
-	MySqlExecute execut;
+	SQLFileCreator execut;
 
 	public void parse(String forParse) {
 

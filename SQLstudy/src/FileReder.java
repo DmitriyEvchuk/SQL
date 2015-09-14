@@ -34,13 +34,24 @@ public class FileReder {
 
 	public static void main(String[] args) {
 
-		FileReder read = new FileReder();
+	FileReder read = new FileReder();
+	
 		MySqlExecute my = new MySqlExecute();
-		MyParser parse = new MyParser(my);
+	
+	SQLFileCreator create= new SQLFileCreator("C:\\FillingDatabase.sql");
+	MyParser parse = new MyParser(create);
 
 		read.readFile("E:\\work\\ccy1.txt");
 		parse.parse(read.getResult());
-		my.showData();
+	    my.showData();
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
