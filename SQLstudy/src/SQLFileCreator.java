@@ -11,64 +11,61 @@ public class SQLFileCreator {
 	SQLFileCreator(String path) {
 
 		this.path = path;
+		newFile = new File(path);
 
 		try {
-			
+
 			fileWriter = new PrintWriter(new BufferedWriter(new FileWriter(
 					path, true)), true);
-		
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	String path;
-	PrintWriter fileWriter;
-	int Id;
+	private String path;
+	private PrintWriter fileWriter;
+	private File newFile;
+	private int Id;
 
-	public void addCountry(String data) {
-
-		File newFile = new File(path);
+	public void createFile() {
 
 		try {
-			newFile.delete();
+			
 			newFile.createNewFile();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		if (newFile.length() == 0){
-			fileWriter.println("INSERT INTO currency values");
-			fileWriter.print("("+Id+","+"'"+data+"'");
-			//Id++;
-		}
-		else{
-			Id++;
-			fileWriter.print(","+"("+Id+","+"'"+data+"'");
-			
-		}
-
-		
-		
 	}
-	
-	public void addCode(String data) {
-		
-		fileWriter.println(","+"'"+data+"'"+")");
-		
+
+	public void addCountry(String data) {
+
+		if (newFile.length() == 0) {
+
+			fileWriter.println("INSERT INTO currency values");
+			fileWriter.print("(" + Id + "," + "'" + data + "'");
+
+		} else {
+
+			Id++;
+			fileWriter.print("," + "(" + Id + "," + "'" + data + "'");
+
 		}
-	
-	public void MyClose(){
-		
+
+	}
+
+	public void addCode(String data) {
+
+		fileWriter.println("," + "'" + data + "'" + ")");
+
+	}
+
+	public void MyClose() {
+
 		fileWriter.close();
 	}
-	
-	
-	
-	
-	
 
 }

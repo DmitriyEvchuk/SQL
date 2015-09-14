@@ -8,11 +8,13 @@ public class MyParser {
 
 	public void parse(String forParse) {
 
+		
 		String control = "";
 		String data = "";
 		Boolean tegNameBegin = false;
 		int counterTd = 0;
-
+		execut.createFile();
+		
 		for (int i = 0; i < forParse.length(); i++) {
 
 			char buf = forParse.charAt(i);

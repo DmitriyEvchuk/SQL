@@ -43,7 +43,7 @@ public class FileReder {
 
 		read.readFile("E:\\work\\ccy1.txt");
 		parse.parse(read.getResult());
-	    my.showData();
+	   // my.showData();
 		
 		
 		
